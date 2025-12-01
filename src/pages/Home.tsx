@@ -1,5 +1,5 @@
 import { HelloWorld } from '@/components';
 
 export function Home() {
-  return <HelloWorld />;
+  return <HelloWorld message="Home" />;
 }

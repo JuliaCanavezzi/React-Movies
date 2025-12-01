@@ -1,10 +1,19 @@
-import { createBrowserRouter, RouterProvider } from 'react-router';
-import { Home } from '@/pages';
+import { createBrowserRouter } from 'react-router';
+import { RouterProvider } from 'react-router/dom';
+import { Container } from '@/layouts';
+import { Authentication, Home } from '@/pages';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    Component: Container,
+    children: [
+      { index: true, Component: Home },
+      {
+        path: 'auth',
+        Component: Authentication,
+      },
+    ],
   },
 ]);
 
