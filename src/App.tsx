@@ -1,6 +1,5 @@
-import { Icon } from '@iconify/react';
-import { Home } from './pages';
+import { Router } from '@/router';
 
 export function App() {
-  return <Home />;
+  return <Router />;
 }
