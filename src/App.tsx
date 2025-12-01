@@ -1,4 +1,4 @@
-import { PlayIcon } from '@phosphor-icons/react';
+import { Icon } from '@iconify/react';
 
 export function App() {
   return (
@@ -6,10 +6,9 @@ export function App() {
       <h1 className="rounded-2xl bg-pink-400 p-2 font-bold text-3xl text-pink-50 dark:bg-rose-600 dark:text-zinc-800">
         Hello world!
       </h1>
-      <PlayIcon
-        weight="bold"
-        size={32}
-        className="text-pink-400 dark:text-rose-600"
+      <Icon
+        icon="ph:play-bold"
+        className="text-3xl text-pink-400 dark:text-rose-600"
       />
     </div>
   );
