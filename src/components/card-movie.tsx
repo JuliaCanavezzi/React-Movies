@@ -11,7 +11,6 @@ interface MovieCardProps {
 }
 
 export function CardMovie({
-  id,
   title,
   genres,
   duration,

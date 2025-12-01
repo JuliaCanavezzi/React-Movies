@@ -1,0 +1,24 @@
+import { Icon } from '@iconify/react';
+
+export function Navbar() {
+  return (
+    <nav className="sticky top-0 z-50 border-slate-200 border-b bg-white/80 px-8 py-4 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/80">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Icon icon="lucide:film" className="h-6 w-6 text-green-400" />
+          <h1 className="font-bold text-slate-900 text-xl dark:text-white">
+            Node Movies
+          </h1>
+        </div>
+
+        <button
+          type="button"
+          className="flex items-center gap-2 rounded-lg px-3 py-2 text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600 dark:text-slate-300 dark:hover:bg-red-900/20 dark:hover:text-red-400"
+        >
+          <Icon icon="ci:exit" className="h-5 w-5" />
+          <span>Sair</span>
+        </button>
+      </div>
+    </nav>
+  );
+}

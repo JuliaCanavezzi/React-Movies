@@ -1,4 +1,4 @@
-import { CardMovie } from '@/components';
+import { CardMovie, Navbar } from '@/components';
 
 export function Home() {
   const movies = [
@@ -77,12 +77,15 @@ export function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white p-8 dark:bg-gray-900">
-      <div className="mx-auto w-full px-8">
-        <div className="grid grid-cols-4 gap-6">
-          {movies.map((movie) => (
-            <CardMovie key={movie.id} {...movie} />
-          ))}
+    <div className="bg-white dark:bg-gray-900">
+      <Navbar />
+      <div className="min-h-screen p-8">
+        <div className="mx-auto w-full px-8">
+          <div className="grid grid-cols-4 gap-6">
+            {movies.map((movie) => (
+              <CardMovie key={movie.id} {...movie} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
