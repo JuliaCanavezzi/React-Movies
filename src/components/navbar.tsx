@@ -2,8 +2,9 @@ import { Icon } from '@iconify/react';
 
 export function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 border-slate-200 border-b bg-white/80 px-8 py-4 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/80">
-      <div className="flex items-center justify-between">
+    <nav className="sticky top-0 z-50 border-slate-200 border-b bg-white/80 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/80">
+      <div className="mx-auto w-full px-16 py-4">
+        <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Icon icon="lucide:film" className="h-6 w-6 text-green-400" />
           <h1 className="font-bold text-slate-900 text-xl dark:text-white">
@@ -18,6 +19,7 @@ export function Navbar() {
           <Icon icon="ci:exit" className="h-5 w-5" />
           <span>Sair</span>
         </button>
+        </div>
       </div>
     </nav>
   );
