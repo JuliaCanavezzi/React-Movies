@@ -2,30 +2,34 @@ import { createBrowserRouter } from 'react-router';
 import { RouterProvider } from 'react-router/dom';
 import { SignIn, SignUp } from '@/components';
 import { Container } from '@/layouts';
-import { Authentication, Home, Player } from '@/pages';
+import { Authentication, Player, Home, Landing } from '@/pages';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     Component: Container,
     children: [
-      { index: true, Component: Home },
+      { index: true, Component: Landing },
       {
-        path: 'auth',
+        path: "auth",
         Component: Authentication,
         children: [
           { index: true, Component: SignIn },
-          { path: 'sign-in', Component: SignIn },
-          { path: 'sign-up', Component: SignUp },
+          { path: "sign-in", Component: SignIn },
+          { path: "sign-up", Component: SignUp },
         ],
       },
       {
-        path: 'player',
+        path: "player",
         Component: Player,
+      },
+      {
+        path: "list-movies",
+        Component: Home,
       },
     ],
   },
-]);
+])
 
 export function Router() {
   return <RouterProvider router={router} />;
