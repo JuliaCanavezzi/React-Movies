@@ -23,11 +23,10 @@ const router = createBrowserRouter([
         path: 'player',
         Component: Player,
       },
-       {
-        path: 'detail-movie', 
+      {
+        path: 'detail-movie',
         Component: DetailMovie,
       },
-     
     ],
   },
 ]);

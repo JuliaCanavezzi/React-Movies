@@ -124,7 +124,9 @@ export function DetailMovie() {
               {/* Diretor */}
               <div className="mb-6">
                 <h3 className="mb-2 font-semibold text-lg">Diretor</h3>
-                <p className="text-gray-300 dark:text-gray-400">{movie.director}</p>
+                <p className="text-gray-300 dark:text-gray-400">
+                  {movie.director}
+                </p>
               </div>
 
               {/* Elenco */}
