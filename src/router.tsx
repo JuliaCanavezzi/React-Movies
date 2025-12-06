@@ -2,14 +2,14 @@ import { createBrowserRouter } from 'react-router';
 import { RouterProvider } from 'react-router/dom';
 import { SignIn, SignUp } from '@/components';
 import { Container } from '@/layouts';
-import { Authentication, Home, Player } from '@/pages';
+import { Authentication, Home, Landing, Player } from '@/pages';
 
 const router = createBrowserRouter([
   {
     path: '/',
     Component: Container,
     children: [
-      { index: true, Component: Home },
+      { index: true, Component: Landing },
       {
         path: 'auth',
         Component: Authentication,
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: 'player',
         Component: Player,
+      },
+      {
+        path: 'list-movies',
+        Component: Home,
       },
     ],
   },
