@@ -15,6 +15,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     Component: Container,
+    ErrorBoundary: NotFound,
     children: [
       { index: true, Component: Home },
       {
@@ -27,18 +28,17 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'player',
+        path: 'player/:id',
         Component: Player,
       },
       {
-        path: 'detail-movie',
+        path: 'movie-detail/:id',
         Component: DetailMovie,
       },
       {
         path: 'welcome',
         Component: Landing,
       },
-      { path: '*', Component: NotFound },
     ],
   },
 ]);

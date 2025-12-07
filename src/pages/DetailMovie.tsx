@@ -1,39 +1,12 @@
 import { Icon } from '@iconify/react';
-import { useEffect, useState } from 'react';
-
-interface Movie {
-  id: string;
-  title: string;
-  year: number;
-  duration: number;
-  ageRating: string;
-  genres: string[];
-  posterLink: string;
-  synopsis: string;
-  director: string;
-  cast: string[];
-}
+import { useNavigate, useParams } from 'react-router';
+import movieMock from '@/mock';
 
 export function DetailMovie() {
-  const [movie, setMovie] = useState<Movie | null>(null);
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const movieData: Movie = {
-      id: '1',
-      title: 'Flor do Deserto',
-      year: 2024,
-      duration: 3120,
-      ageRating: '18',
-      genres: ['Romance'],
-      posterLink:
-        'https://i.pinimg.com/736x/20/db/9b/20db9b6b7f3893565953bf4a617477a8.jpg',
-      synopsis:
-        'Após a morte do Quarto Hokage, a Vila da Folha mergulha em tensão e paranoia. Dois bebês Uzumaki carregam um poder capaz de salvar — ou destruir — todos. Entre decisões políticas, medo e sacrifícios, o destino dos irmãos é selado quando Jiraiya parte levando um deles, rompendo laços antes mesmo que possam existir',
-      director: 'Robert Brito',
-      cast: ['Jennifer White', 'Thomas Brown', 'Emily Davis'],
-    };
-    setMovie(movieData);
-  }, []);
+  const movie = movieMock.find(({ id: movieId }) => movieId === id) || null;
 
   if (!movie) return <div>Carregando...</div>;
 
@@ -54,7 +27,8 @@ export function DetailMovie() {
         <div className="flex items-center px-4 py-4 lg:px-8 lg:py-6">
           <button
             type="button"
-            className="flex items-center gap-2 text-sm text-white hover:text-gray-300"
+            className="flex cursor-pointer items-center gap-2 text-sm text-white hover:text-gray-300"
+            onClick={() => navigate(-1)}
           >
             <Icon icon="solar:arrow-left-linear" className="h-4 w-4" />
             Voltar
@@ -81,7 +55,8 @@ export function DetailMovie() {
                 </span>
                 <span className="flex items-center gap-1">
                   <Icon icon="solar:clock-circle-linear" className="h-3 w-3" />
-                  {Math.floor(movie.duration / 60)} min
+                  {Math.floor(movie.duration / 3600)}h{' '}
+                  {Math.floor((movie.duration % 3600) / 60)}min
                 </span>
                 <span className="flex items-center gap-1">
                   <Icon icon="solar:star-linear" className="h-3 w-3" />
@@ -102,7 +77,8 @@ export function DetailMovie() {
 
               <button
                 type="button"
-                className="mt-5 flex w-fit items-center gap-2 rounded-lg bg-green-500 px-5 py-2 font-semibold text-sm hover:bg-green-600"
+                className="mt-5 flex w-fit cursor-pointer items-center gap-2 rounded-lg bg-green-500 px-5 py-2 font-semibold text-sm hover:bg-green-600"
+                onClick={() => navigate(`/player/${id}`)}
               >
                 <Icon icon="solar:play-bold" className="h-4 w-4" />
                 Reproduzir
@@ -111,13 +87,8 @@ export function DetailMovie() {
               <div className="mt-5">
                 <h2 className="mb-1 font-semibold text-sm">Sinopse</h2>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  {movie.synopsis}
+                  {movie.description}
                 </p>
-              </div>
-
-              <div className="mt-4">
-                <h3 className="font-semibold text-sm">Diretor</h3>
-                <p className="text-gray-300 text-sm">{movie.director}</p>
               </div>
 
               <div className="mt-4">
@@ -128,16 +99,6 @@ export function DetailMovie() {
                   />
                   Elenco
                 </h3>
-                <div className="flex flex-wrap gap-2">
-                  {movie.cast.map((actor) => (
-                    <span
-                      key={actor}
-                      className="rounded-md bg-slate-700 px-3 py-1 text-xs"
-                    >
-                      {actor}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

@@ -54,7 +54,7 @@ export function SignUp() {
         Confirmar Senha
       </FormInput>
 
-      <FormButton>Criar Conta</FormButton>
+      <FormButton to="/">Criar Conta</FormButton>
     </div>
   );
 }

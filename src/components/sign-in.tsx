@@ -29,7 +29,7 @@ export function SignIn() {
         Senha
       </FormInput>
 
-      <FormButton>Entrar</FormButton>
+      <FormButton to="/">Entrar</FormButton>
     </div>
   );
 }

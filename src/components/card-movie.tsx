@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react';
+import { useNavigate } from 'react-router';
 import { Card } from './card';
 
 interface MovieCardProps {
@@ -11,18 +12,19 @@ interface MovieCardProps {
 }
 
 export function CardMovie({
+  id,
   title,
   genres,
   duration,
   ageRating,
   posterLink,
 }: MovieCardProps) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <Card
       className="movie-card-hover group hover:-translate-y-2 cursor-pointer overflow-hidden border-slate-200 bg-white transition-all duration-300 hover:scale-102 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
-      // onClick={() => navigate(`/movie/${id}`)}
+      onClick={() => navigate(`/movie-detail/${id}`)}
     >
       <div className="relative overflow-hidden">
         <img

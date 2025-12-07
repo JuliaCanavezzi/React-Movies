@@ -1,6 +1,9 @@
 import { Icon } from '@iconify/react';
+import { useNavigate } from 'react-router';
 
 export function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <nav className="sticky top-0 z-50 border-slate-200 border-b bg-white/80 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/80">
       <div className="mx-auto w-full px-16 py-4">
@@ -14,7 +17,8 @@ export function Navbar() {
 
           <button
             type="button"
-            className="flex items-center gap-2 rounded-lg px-3 py-2 text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600 dark:text-slate-300 dark:hover:bg-red-900/20 dark:hover:text-red-400"
+            className="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600 dark:text-slate-300 dark:hover:bg-red-900/20 dark:hover:text-red-400"
+            onClick={() => navigate('/welcome')}
           >
             <Icon icon="ci:exit" className="h-5 w-5" />
             <span>Sair</span>
