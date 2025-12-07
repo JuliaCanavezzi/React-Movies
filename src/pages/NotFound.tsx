@@ -17,14 +17,14 @@ export function NotFound() {
         <p className="mt-4 text-lg text-zinc-300">Page not found</p>
 
         <p className="mt-2 text-sm text-zinc-400">
-          The page you are looking for doesn’t exist or was moved.
+          A página que você está procurando não existe ou foi movida.
         </p>
 
         <Link
           to="/"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-green-400 px-6 py-3 font-bold text-emerald-950 text-sm transition-all hover:scale-105 hover:bg-green-500 active:scale-95"
         >
-          Go back home
+          Voltar para tela inicial
           <Icon icon="ph:arrow-right-bold" />
         </Link>
       </div>
