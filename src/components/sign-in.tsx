@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { Modal } from '@/components';
 import { FormButton, FormInfo, FormInput } from '@/components/form';
 import { authService } from '@/services/auth';
 
 export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [modal, setModal] = useState({ isOpen: false, message: '' });
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -14,10 +16,10 @@ export function SignIn() {
     try {
       const response = await authService.signIn(email, password, 'user');
       localStorage.setItem('token', response.value.token);
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       console.error('Erro no login:', error);
-      alert('Email ou senha inválidos');
+      setModal({ isOpen: true, message: 'Email ou senha inválidos' });
     }
   };
 
@@ -45,14 +47,17 @@ export function SignIn() {
         Senha
       </FormInput>
 
-      <form onSubmit={handleSubmit}>
-        <button 
-          type="submit"
-          className="flex min-h-10 w-full items-center justify-center rounded-md bg-green-400 font-bold text-sm text-white transition-all duration-300 hover:bg-green-500 dark:text-black"
-        >
-          Entrar
-        </button>
-      </form>
+      <FormButton onClick={() => handleSubmit({} as React.FormEvent)}>
+        Entrar
+      </FormButton>
+
+      <Modal
+        isOpen={modal.isOpen}
+        onClose={() => setModal({ ...modal, isOpen: false })}
+        title="Aviso"
+      >
+        {modal.message}
+      </Modal>
     </div>
   );
 }

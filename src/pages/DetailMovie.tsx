@@ -1,14 +1,13 @@
 import { Icon } from '@iconify/react';
 import { useNavigate, useParams } from 'react-router';
-import movieMock from '@/mock';
+import { useMovie } from '@/hooks/useMovies';
 
 export function DetailMovie() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const movie = useMovie(id);
 
-  const movie = movieMock.find(({ id: movieId }) => movieId === id) || null;
-
-  if (!movie) return <div>Carregando...</div>;
+  if (!movie) return null;
 
   return (
     <div className="relative h-screen w-full overflow-y-auto lg:overflow-hidden">
@@ -68,7 +67,7 @@ export function DetailMovie() {
                 {movie.genres.map((genre) => (
                   <span
                     key={genre}
-                    className="rounded-full bg-purple-600 px-3 py-1 font-medium text-xs"
+                    className="rounded-full bg-green-600 px-3 py-1 font-medium text-white text-xs"
                   >
                     {genre}
                   </span>
@@ -89,16 +88,6 @@ export function DetailMovie() {
                 <p className="text-gray-300 text-sm leading-relaxed">
                   {movie.description}
                 </p>
-              </div>
-
-              <div className="mt-4">
-                <h3 className="mb-2 flex items-center gap-2 font-semibold text-sm">
-                  <Icon
-                    icon="solar:users-group-rounded-linear"
-                    className="h-4 w-4"
-                  />
-                  Elenco
-                </h3>
               </div>
             </div>
           </div>

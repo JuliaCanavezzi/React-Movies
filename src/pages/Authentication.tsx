@@ -6,8 +6,10 @@ export function Authentication() {
   return (
     <div className="mb-4 w-full max-w-md space-y-6">
       <div className="flex flex-row items-center justify-center space-x-2 font-bold text-3xl">
-        <Icon icon="lucide:film" className="text-green-400" />
-        <span>NodeMovies</span>
+        <Icon icon="ph:film-strip-bold" className="text-green-400" />
+        <span>
+          NODE<span className="text-green-400">MOVIES</span>
+        </span>
       </div>
 
       <div className="flex min-h-10 w-full overflow-hidden rounded-md bg-neutral-200 p-1.5 text-center align-middle text-sm dark:bg-neutral-700 dark:text-white">

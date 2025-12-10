@@ -23,7 +23,7 @@ export function CardMovie({
 
   return (
     <Card
-      className="movie-card-hover group hover:-translate-y-2 cursor-pointer overflow-hidden border-slate-200 bg-white transition-all duration-300 hover:scale-102 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
+      className="movie-card-hover group hover:-translate-y-2 cursor-pointer overflow-hidden border-slate-200 bg-white transition-all duration-300 hover:scale-102 hover:shadow-xl dark:border-zinc-700 dark:bg-zinc-800"
       onClick={() => navigate(`/movie-detail/${id}`)}
     >
       <div className="relative overflow-hidden">
@@ -32,14 +32,14 @@ export function CardMovie({
           alt={title}
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-102"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-white/90 via-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-slate-800/60 dark:via-slate-800/10" />
+        <div className="absolute inset-0 bg-linear-to-t from-white/90 via-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-zinc-800/60 dark:via-zinc-800/10" />
       </div>
       <div className="p-5">
         <div className="mb-2 flex items-center gap-2">
           <h3 className="line-clamp-1 font-semibold text-lg text-slate-900 dark:text-white">
             {title}
           </h3>
-          <div className="inline-block rounded-md bg-blue-100 px-2 py-1 font-medium text-blue-700 text-xs dark:bg-blue-900 dark:text-blue-300">
+          <div className="inline-block rounded-md bg-green-100 px-2 py-1 font-medium text-green-700 text-xs dark:bg-green-900 dark:text-green-300">
             <span>{ageRating}</span>
           </div>
         </div>
@@ -55,7 +55,7 @@ export function CardMovie({
             {genres.map((genre) => (
               <span
                 key={genre}
-                className="rounded-full border border-slate-300 bg-white px-3 py-1 font-medium text-slate-700 text-xs shadow-sm dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300"
+                className="rounded-full border border-slate-300 bg-white px-3 py-1 font-medium text-slate-700 text-xs shadow-sm dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-300"
               >
                 {genre}
               </span>

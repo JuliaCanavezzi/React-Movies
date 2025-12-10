@@ -5,7 +5,7 @@ export const moviesService = {
     return api.request('/movies');
   },
 
-  async createMovie(movieData: any) {
+  async createMovie(movieData: object) {
     return api.request('/addMovie', {
       method: 'POST',
       body: JSON.stringify(movieData),

@@ -11,7 +11,7 @@ export function Search() {
         <input
           type="text"
           placeholder="Buscar filmes..."
-          className="w-full rounded-lg border border-slate-300 bg-white py-3 pr-4 pl-10 text-slate-900 placeholder-slate-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-400 dark:focus:border-blue-400"
+          className="w-full rounded-lg border border-slate-300 bg-white py-3 pr-4 pl-10 text-slate-900 placeholder-slate-500 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white dark:placeholder-zinc-400 dark:focus:border-green-400"
         />
       </div>
     </div>
