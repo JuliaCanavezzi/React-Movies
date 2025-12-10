@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export function NotFound() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-zinc-950 px-6 text-center text-white">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-zinc-900 px-6 text-center text-white">
       <div className="-translate-x-1/2 -translate-y-1/2 absolute inset-1/2 h-80 w-[320px] rounded-full bg-green-500/20 blur-[100px]" />
 
       <div className="relative z-10 flex max-w-md flex-col items-center">

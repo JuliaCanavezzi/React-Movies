@@ -1,6 +1,16 @@
 import { Icon } from '@iconify/react';
 
-export function Search() {
+interface SearchProps {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+}
+
+export function Search({
+  value,
+  onChange,
+  placeholder = 'Buscar filmes...',
+}: SearchProps) {
   return (
     <div>
       <div className="relative">
@@ -10,8 +20,10 @@ export function Search() {
         />
         <input
           type="text"
-          placeholder="Buscar filmes..."
-          className="w-full rounded-lg border border-slate-300 bg-white py-3 pr-4 pl-10 text-slate-900 placeholder-slate-500 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white dark:placeholder-zinc-400 dark:focus:border-green-400"
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="w-full rounded-lg border border-zinc-600 bg-zinc-800 py-3 pr-4 pl-10 text-white placeholder-zinc-400 focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-400/20"
         />
       </div>
     </div>

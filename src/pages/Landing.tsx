@@ -12,11 +12,11 @@ const posters = [
 
 export function Landing() {
   return (
-    <div className="h-screen w-full overflow-y-auto bg-zinc-950 selection:bg-green-400 selection:text-emerald-950 lg:overflow-hidden">
+    <div className="h-screen w-full overflow-y-auto bg-zinc-900 selection:bg-green-400 selection:text-emerald-950 lg:overflow-hidden">
       <header className="container mx-auto flex h-16 items-center justify-between px-4 sm:h-20 sm:px-6">
         <div className="flex items-center gap-2">
           <Icon
-            icon="ph:film-strip-bold"
+            icon="lucide:film"
             className="text-green-400 text-xl sm:text-2xl"
           />
           <span className="font-black text-base text-white tracking-tighter sm:text-lg">

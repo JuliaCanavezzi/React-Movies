@@ -26,7 +26,7 @@ export function DetailMovie() {
         <div className="flex items-center px-4 py-4 lg:px-8 lg:py-6">
           <button
             type="button"
-            className="flex cursor-pointer items-center gap-2 text-sm text-white hover:text-gray-300"
+            className="flex cursor-pointer items-center gap-2 rounded-lg bg-zinc-800/80 px-4 py-2 text-sm text-white transition-colors hover:bg-zinc-700 hover:text-green-400"
             onClick={() => navigate(-1)}
           >
             <Icon icon="solar:arrow-left-linear" className="h-4 w-4" />
@@ -67,7 +67,7 @@ export function DetailMovie() {
                 {movie.genres.map((genre) => (
                   <span
                     key={genre}
-                    className="rounded-full bg-green-600 px-3 py-1 font-medium text-white text-xs"
+                    className="flex items-center rounded border border-zinc-600 bg-zinc-700 px-3 py-1 font-medium text-xs text-zinc-300"
                   >
                     {genre}
                   </span>

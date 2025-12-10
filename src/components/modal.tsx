@@ -18,20 +18,15 @@ export function Modal({ children, isOpen, onClose, title }: ModalProps) {
       aria-modal="true"
     >
       <div
-        className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl dark:bg-zinc-800"
+        className="max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-xl border border-zinc-700 bg-zinc-800 p-8 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={(e) => e.stopPropagation()}
         role="document"
       >
-        {title && <h3 className="mb-4 font-semibold text-lg">{title}</h3>}
-        <div className="mb-4">{children}</div>
-        <button
-          type="button"
-          onClick={onClose}
-          className="w-full rounded bg-green-400 py-2 text-white hover:bg-green-500"
-        >
-          OK
-        </button>
+        {title && (
+          <h3 className="mb-6 font-semibold text-white text-xl">{title}</h3>
+        )}
+        <div>{children}</div>
       </div>
     </div>
   );

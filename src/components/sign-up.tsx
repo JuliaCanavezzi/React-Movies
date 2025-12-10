@@ -31,7 +31,7 @@ export function SignUp() {
   };
 
   return (
-    <div className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <FormInfo
         title="Criar Conta"
         info="Preencha os dados para criar sua conta"
@@ -77,9 +77,7 @@ export function SignUp() {
         Confirmar Senha
       </FormInput>
 
-      <FormButton onClick={() => handleSubmit({} as React.FormEvent)}>
-        Criar Conta
-      </FormButton>
+      <FormButton onClick={() => {}}>Criar Conta</FormButton>
 
       <Modal
         isOpen={modal.isOpen}
@@ -88,6 +86,6 @@ export function SignUp() {
       >
         {modal.message}
       </Modal>
-    </div>
+    </form>
   );
 }

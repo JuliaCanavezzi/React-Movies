@@ -11,4 +11,20 @@ export const moviesService = {
       body: JSON.stringify(movieData),
     });
   },
+
+  async updateMovie(id: string, movieData: object) {
+    return api.request(`/movies/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(movieData),
+    });
+  },
+
+  async deleteMovie(id: string) {
+    return api.request(`/movies/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+    });
+  },
 };

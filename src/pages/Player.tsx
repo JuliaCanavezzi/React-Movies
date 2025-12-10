@@ -10,53 +10,108 @@ export function Player() {
   if (!movie) return null;
 
   return (
-    <div className="flex h-screen w-full flex-col overflow-hidden bg-white text-black dark:bg-zinc-900 dark:text-white">
-      <div className="border-gray-300 border-b p-6 dark:border-gray-700">
-        <button
-          type="button"
-          className="flex items-center gap-2 text-black dark:text-white"
-          onClick={() => navigate(-1)}
-        >
-          <Icon icon="solar:arrow-left-linear" className="text-2xl" />
-          <span>Voltar</span>
-        </button>
+    <div className="min-h-screen w-full bg-zinc-900 text-white">
+      <div className="sticky top-0 z-10 border-zinc-700 border-b bg-zinc-800/90 backdrop-blur-sm">
+        <div className="flex items-center justify-between px-6 py-4">
+          <button
+            type="button"
+            className="flex cursor-pointer items-center gap-2 rounded-lg bg-zinc-700 px-4 py-2 text-sm transition-colors hover:bg-zinc-600 hover:text-green-400"
+            onClick={() => navigate(-1)}
+          >
+            <Icon icon="solar:arrow-left-linear" className="h-4 w-4" />
+            Voltar
+          </button>
+          <h1 className="ml-4 truncate font-bold text-lg text-white">
+            {movie.title}
+          </h1>
+        </div>
       </div>
 
-      <div className="flex flex-1 flex-col items-center justify-center px-6">
-        <button
-          type="button"
-          className="mb-8 flex h-30 w-30 cursor-pointer items-center justify-center rounded-full bg-green-600 transition-colors hover:bg-green-700"
-          onClick={() => window.open(movie.movieLink, '_blank')}
-        >
-          <Icon icon="solar:play-bold" className="text-7xl text-white" />
-        </button>
+      <div className="container mx-auto px-6 py-8">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-8 text-center">
+            <button
+              type="button"
+              className="mx-auto mb-6 flex h-24 w-24 cursor-pointer items-center justify-center rounded-full bg-green-500 transition-all hover:scale-105 hover:bg-green-600"
+              onClick={() => window.open(movie.movieLink, '_blank')}
+            >
+              <Icon
+                icon="solar:play-bold"
+                className="ml-1 text-4xl text-white"
+              />
+            </button>
 
-        <h1 className="mb-4 text-center font-bold text-4xl text-black dark:text-white">
-          {movie.title}
-        </h1>
+            <p className="mb-6 text-lg text-zinc-300">
+              Clique no botão play para assistir!
+            </p>
+          </div>
 
-        <div className="mb-8 max-w-2xl rounded-lg border border-gray-300 bg-gray-100 p-8 text-center dark:border-gray-950 dark:bg-zinc-800">
-          <p className="mb-4 text-2xl text-gray-600 dark:text-zinc-400">
-            Clique no botão play para assistir!
-          </p>
-          <p className="text-gray-500 text-xl dark:text-zinc-500">
-            {movie.description}
-          </p>
-        </div>
+          <div className="rounded-xl border border-zinc-700 bg-zinc-800 p-8 shadow-lg">
+            <div>
+              <h2 className="mb-3 font-bold text-white text-xl">Sinopse</h2>
+              <p className="text-zinc-300 leading-relaxed">
+                {movie.description}
+              </p>
+            </div>
 
-        <div className="space-y-2 text-center">
-          <p className="text-gray-700 dark:text-gray-300">
-            <span className="font-semibold">Duração:</span>{' '}
-            {Math.floor(movie.duration / 3600)}h{' '}
-            {Math.floor((movie.duration % 3600) / 60)}min
-          </p>
-          <p className="text-gray-700 dark:text-gray-300">
-            <span className="font-semibold">Gênero:</span>{' '}
-            {movie.genres.join(', ')}
-          </p>
-          <p className="text-gray-700 dark:text-gray-300">
-            <span className="font-semibold">Ano:</span> {movie.year}
-          </p>
+            <div className="my-6 grid grid-cols-1 gap-6 text-sm md:grid-cols-3">
+              <div className="text-center md:text-left">
+                <span className="mb-1 font-semibold text-zinc-400">
+                  Duração:{' '}
+                </span>
+                <span className="text-white">
+                  {Math.floor(movie.duration / 3600)}h{' '}
+                  {Math.floor((movie.duration % 3600) / 60)}min
+                </span>
+              </div>
+
+              <div className="text-center md:text-left">
+                <span className="mb-1 font-semibold text-zinc-400">Ano: </span>
+                <span className="text-white">{movie.year}</span>
+              </div>
+
+              <div className="text-center md:text-left">
+                <span className="mb-1 font-semibold text-zinc-400">
+                  Classificação:{' '}
+                </span>
+                <span
+                  className={`inline-block rounded px-3 py-1 font-medium text-xs ${
+                    movie.ageRating === 'L'
+                      ? 'bg-green-500 text-white'
+                      : movie.ageRating === '10'
+                        ? 'bg-blue-500 text-white'
+                        : movie.ageRating === '12'
+                          ? 'bg-yellow-500 text-black'
+                          : movie.ageRating === '14'
+                            ? 'bg-orange-500 text-white'
+                            : movie.ageRating === '16'
+                              ? 'bg-red-500 text-white'
+                              : movie.ageRating === '18'
+                                ? 'bg-zinc-900 text-white'
+                                : 'bg-gray-500 text-white'
+                  }`}
+                >
+                  {movie.ageRating}
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <span className="mb-3 block font-semibold text-zinc-400">
+                Gêneros:
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {movie.genres.map((genre) => (
+                  <span
+                    key={genre}
+                    className="flex items-center rounded border border-zinc-600 bg-zinc-700 px-3 py-1 font-medium text-xs text-zinc-300"
+                  >
+                    {genre}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

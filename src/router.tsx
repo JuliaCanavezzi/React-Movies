@@ -1,8 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import { ProtectedRoute, SignIn, SignUp } from '@/components';
+import { AdminRoute, ProtectedRoute, SignIn, SignUp } from '@/components';
 import { Container } from '@/layouts';
 import {
   Authentication,
+  Dashboard,
   DetailMovie,
   Home,
   Landing,
@@ -23,6 +24,14 @@ const router = createBrowserRouter([
           <ProtectedRoute>
             <Home />
           </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'dashboard',
+        element: (
+          <AdminRoute>
+            <Dashboard />
+          </AdminRoute>
         ),
       },
       {

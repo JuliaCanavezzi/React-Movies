@@ -23,44 +23,66 @@ export function CardMovie({
 
   return (
     <Card
-      className="movie-card-hover group hover:-translate-y-2 cursor-pointer overflow-hidden border-slate-200 bg-white transition-all duration-300 hover:scale-102 hover:shadow-xl dark:border-zinc-700 dark:bg-zinc-800"
+      className="group hover:-translate-y-2 cursor-pointer overflow-hidden border-zinc-700 bg-zinc-800 transition-all duration-300 hover:shadow-xl"
       onClick={() => navigate(`/movie-detail/${id}`)}
     >
       <div className="relative overflow-hidden">
         <img
           src={posterLink}
           alt={title}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-102"
+          className="h-80 w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-white/90 via-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-zinc-800/60 dark:via-zinc-800/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-800/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
-      <div className="p-5">
-        <div className="mb-2 flex items-center gap-2">
-          <h3 className="line-clamp-1 font-semibold text-lg text-slate-900 dark:text-white">
+
+      <div className="space-y-3 p-4">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="line-clamp-2 flex-1 font-semibold text-lg text-white">
             {title}
           </h3>
-          <div className="inline-block rounded-md bg-green-100 px-2 py-1 font-medium text-green-700 text-xs dark:bg-green-900 dark:text-green-300">
-            <span>{ageRating}</span>
-          </div>
+          <span
+            className={`shrink-0 rounded px-2 py-1 font-medium text-xs ${
+              ageRating === 'L'
+                ? 'bg-green-500 text-white'
+                : ageRating === '10'
+                  ? 'bg-blue-500 text-white'
+                  : ageRating === '12'
+                    ? 'bg-yellow-500 text-black'
+                    : ageRating === '14'
+                      ? 'bg-orange-500 text-white'
+                      : ageRating === '16'
+                        ? 'bg-red-500 text-white'
+                        : ageRating === '18'
+                          ? 'bg-zinc-900 text-white'
+                          : 'bg-gray-500 text-white'
+            }`}
+          >
+            {ageRating}
+          </span>
         </div>
-        <div className="space-y-1 text-base text-slate-600 dark:text-slate-300">
-          <div className="flex items-center gap-2">
-            <Icon icon="solar:clock-circle-broken" className="h-4 w-4" />
-            <span>
-              {Math.floor(duration / 3600)}h{' '}
-              {Math.floor((duration % 3600) / 60)}min
+
+        <div className="flex items-center gap-2 text-sm text-zinc-400">
+          <Icon icon="solar:clock-circle-broken" className="h-4 w-4" />
+          <span>
+            {Math.floor(duration / 3600)}h {Math.floor((duration % 3600) / 60)}
+            min
+          </span>
+        </div>
+
+        <div className="flex min-h-[2rem] flex-wrap gap-1">
+          {genres.slice(0, 3).map((genre) => (
+            <span
+              key={genre}
+              className="flex items-center rounded bg-zinc-700 px-2 py-1 font-medium text-xs text-zinc-300"
+            >
+              {genre}
             </span>
-          </div>
-          <div className="mt-2 flex flex-wrap gap-1">
-            {genres.map((genre) => (
-              <span
-                key={genre}
-                className="rounded-full border border-slate-300 bg-white px-3 py-1 font-medium text-slate-700 text-xs shadow-sm dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-300"
-              >
-                {genre}
-              </span>
-            ))}
-          </div>
+          ))}
+          {genres.length > 3 && (
+            <span className="self-center text-xs text-zinc-400">
+              +{genres.length - 3}
+            </span>
+          )}
         </div>
       </div>
     </Card>

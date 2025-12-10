@@ -24,7 +24,7 @@ export function SignIn() {
   };
 
   return (
-    <div className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <FormInfo info="Entre com suas credenciais" title="Login" />
 
       <FormInput
@@ -47,9 +47,7 @@ export function SignIn() {
         Senha
       </FormInput>
 
-      <FormButton onClick={() => handleSubmit({} as React.FormEvent)}>
-        Entrar
-      </FormButton>
+      <FormButton onClick={() => {}}>Entrar</FormButton>
 
       <Modal
         isOpen={modal.isOpen}
@@ -58,6 +56,6 @@ export function SignIn() {
       >
         {modal.message}
       </Modal>
-    </div>
+    </form>
   );
 }
