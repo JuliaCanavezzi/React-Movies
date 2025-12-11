@@ -1,0 +1,7 @@
+services:
+  react-movies:
+    container_name: react-movies
+    image: react-movies
+    build: .
+    ports:
+      - 80:80

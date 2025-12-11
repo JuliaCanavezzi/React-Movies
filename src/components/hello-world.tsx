@@ -1,0 +1,18 @@
+import { Icon } from '@iconify/react';
+
+interface HelloWorldProps {
+  message?: string;
+  icon?: string;
+}
+
+export function HelloWorld({
+  message = 'Hello World!',
+  icon = 'ph:play-bold',
+}: HelloWorldProps) {
+  return (
+    <div className="flex flex-row items-center justify-center gap-3 rounded-2xl bg-rose-600 p-2 font-bold text-3xl text-zinc-800">
+      <h1>{message}</h1>
+      <Icon icon={icon} />
+    </div>
+  );
+}
