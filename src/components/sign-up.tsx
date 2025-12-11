@@ -1,14 +1,37 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { Modal } from '@/components';
 import { FormButton, FormInfo, FormInput } from '@/components/form';
+import { authService } from '@/services/auth';
 
 export function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [modal, setModal] = useState({ isOpen: false, message: '' });
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (password !== passwordConfirm) {
+      setModal({ isOpen: true, message: 'Senhas não coincidem!' });
+      return;
+    }
+
+    try {
+      const response = await authService.signUp(name, email, password, 'user');
+      localStorage.setItem('token', response.value.token);
+      navigate('/home');
+    } catch (error) {
+      console.error('Erro no cadastro:', error);
+      setModal({ isOpen: true, message: 'Erro ao criar conta' });
+    }
+  };
 
   return (
-    <div className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <FormInfo
         title="Criar Conta"
         info="Preencha os dados para criar sua conta"
@@ -54,7 +77,15 @@ export function SignUp() {
         Confirmar Senha
       </FormInput>
 
-      <FormButton to="/">Criar Conta</FormButton>
-    </div>
+      <FormButton onClick={() => {}}>Criar Conta</FormButton>
+
+      <Modal
+        isOpen={modal.isOpen}
+        onClose={() => setModal({ ...modal, isOpen: false })}
+        title="Aviso"
+      >
+        {modal.message}
+      </Modal>
+    </form>
   );
 }

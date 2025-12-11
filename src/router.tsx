@@ -1,9 +1,9 @@
-import { createBrowserRouter } from 'react-router';
-import { RouterProvider } from 'react-router/dom';
-import { SignIn, SignUp } from '@/components';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import { AdminRoute, ProtectedRoute, SignIn, SignUp } from '@/components';
 import { Container } from '@/layouts';
 import {
   Authentication,
+  Dashboard,
   DetailMovie,
   Home,
   Landing,
@@ -17,7 +17,23 @@ const router = createBrowserRouter([
     Component: Container,
     ErrorBoundary: NotFound,
     children: [
-      { index: true, Component: Home },
+      { index: true, Component: Landing },
+      {
+        path: 'home',
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'dashboard',
+        element: (
+          <AdminRoute>
+            <Dashboard />
+          </AdminRoute>
+        ),
+      },
       {
         path: 'auth',
         Component: Authentication,
@@ -29,15 +45,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'player/:id',
-        Component: Player,
+        element: (
+          <ProtectedRoute>
+            <Player />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'movie-detail/:id',
-        Component: DetailMovie,
-      },
-      {
-        path: 'welcome',
-        Component: Landing,
+        element: (
+          <ProtectedRoute>
+            <DetailMovie />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

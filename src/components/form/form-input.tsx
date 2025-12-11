@@ -6,28 +6,48 @@ import {
 } from 'react';
 
 interface FormInputProps
-  extends InputHTMLAttributes<HTMLInputElement>,
-    PropsWithChildren {}
+  extends InputHTMLAttributes<HTMLInputElement | HTMLSelectElement>,
+    PropsWithChildren {
+  options?: { value: string; label: string }[];
+}
 
-export function FormInput({ id, children, type, ...props }: FormInputProps) {
+export function FormInput({
+  id,
+  children,
+  type,
+  options,
+  ...props
+}: FormInputProps) {
   const [show, setShow] = useState(false);
 
   const isPassword = type === 'password';
   const inputType = isPassword && show ? 'text' : type;
+  const baseClasses =
+    'w-full rounded-lg border border-zinc-600 bg-zinc-700 px-4 py-2.5 text-sm text-white placeholder-zinc-400 outline-none ring-green-400 ring-offset-2 ring-offset-zinc-800 focus:ring-2';
 
   return (
     <div className="flex flex-col space-y-2">
-      <label htmlFor={id} className="text-sm">
+      <label htmlFor={id} className="font-medium text-sm text-zinc-300">
         {children}
       </label>
 
       <div className="relative">
-        <input
-          id={id}
-          type={inputType}
-          className="w-full rounded-lg border border-neutral-400 bg-neutral-100 px-4 py-2 text-sm placeholder-zinc-600 outline-none ring-green-400 ring-offset-2 focus:ring-2 dark:border-zinc-700 dark:bg-zinc-900 dark:ring-offset-zinc-900"
-          {...props}
-        />
+        {type === 'select' ? (
+          <select
+            id={id}
+            className={baseClasses}
+            value={props.value}
+            onChange={props.onChange}
+          >
+            {options?.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <input id={id} type={inputType} className={baseClasses} {...props} />
+        )}
 
         {isPassword && (
           <button

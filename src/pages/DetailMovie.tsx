@@ -1,14 +1,13 @@
 import { Icon } from '@iconify/react';
 import { useNavigate, useParams } from 'react-router';
-import movieMock from '@/mock';
+import { useMovie } from '@/hooks/useMovies';
 
 export function DetailMovie() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const movie = useMovie(id);
 
-  const movie = movieMock.find(({ id: movieId }) => movieId === id) || null;
-
-  if (!movie) return <div>Carregando...</div>;
+  if (!movie) return null;
 
   return (
     <div className="relative h-screen w-full overflow-y-auto lg:overflow-hidden">
@@ -27,7 +26,7 @@ export function DetailMovie() {
         <div className="flex items-center px-4 py-4 lg:px-8 lg:py-6">
           <button
             type="button"
-            className="flex cursor-pointer items-center gap-2 text-sm text-white hover:text-gray-300"
+            className="flex cursor-pointer items-center gap-2 rounded-lg bg-zinc-800/80 px-4 py-2 text-sm text-white transition-colors hover:bg-zinc-700 hover:text-green-400"
             onClick={() => navigate(-1)}
           >
             <Icon icon="solar:arrow-left-linear" className="h-4 w-4" />
@@ -68,7 +67,7 @@ export function DetailMovie() {
                 {movie.genres.map((genre) => (
                   <span
                     key={genre}
-                    className="rounded-full bg-purple-600 px-3 py-1 font-medium text-xs"
+                    className="flex items-center rounded border border-zinc-600 bg-zinc-700 px-3 py-1 font-medium text-xs text-zinc-300"
                   >
                     {genre}
                   </span>
@@ -89,16 +88,6 @@ export function DetailMovie() {
                 <p className="text-gray-300 text-sm leading-relaxed">
                   {movie.description}
                 </p>
-              </div>
-
-              <div className="mt-4">
-                <h3 className="mb-2 flex items-center gap-2 font-semibold text-sm">
-                  <Icon
-                    icon="solar:users-group-rounded-linear"
-                    className="h-4 w-4"
-                  />
-                  Elenco
-                </h3>
               </div>
             </div>
           </div>

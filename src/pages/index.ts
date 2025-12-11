@@ -1,4 +1,5 @@
 export * from './Authentication';
+export * from './Dashboard';
 export * from './DetailMovie';
 export * from './Home';
 export * from './Landing';
