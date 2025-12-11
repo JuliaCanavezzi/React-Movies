@@ -1,5 +1,29 @@
 # React + TypeScript + Vite
 
+## Instalar e Rodar
+
+tenha certeza de ter o node e o pnpm instalados localmente, depois rode o seguinte comando:
+
+```shell
+pnpm install
+```
+
+e para rodar o projeto:
+
+```shell
+pnpm dev
+```
+
+## Técnologias
+
+- React
+- Node.JS
+- Tailwindcss
+- PNPM
+- Iconify
+- Vite
+- Typescript
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
